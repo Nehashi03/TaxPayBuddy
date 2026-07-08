@@ -1,34 +1,39 @@
+import os
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
 import google.generativeai as genai
 
 from src.framework.interfaces.interfaces import ILLMClient
-from src.framework.utils.config_manager import ConfigManager
-from src.framework.utils.logger import Logger
 
 
 class GeminiClient(ILLMClient):
     """
-    Gemini implementation of the LLM interface.
+    Gemini API client.
     """
 
     def __init__(self):
 
-        config = ConfigManager()
+        api_key = os.getenv("GEMINI_API_KEY")
 
-        api_key = config.get_gemini_api_key()
+        if not api_key:
+            raise ValueError("Gemini API key not found.")
 
         genai.configure(api_key=api_key)
 
         self.model = genai.GenerativeModel("gemini-2.5-flash")
 
-    def generate(self, prompt: str) -> str:
-        """
-        Generate a response from Gemini.
-        """
+    def generate(self, prompt: str, system_instruction: str = "") -> str:
 
-        Logger.info("Generating response from Gemini...")
+        full_prompt = f"""
+{system_instruction}
 
-        response = self.model.generate_content(prompt)
+Question:
+{prompt}
+"""
 
-        Logger.success("Response generated successfully.")
+        response = self.model.generate_content(full_prompt)
 
         return response.text
