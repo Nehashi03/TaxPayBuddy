@@ -43,14 +43,25 @@ class BaseAgent(IAgent, ABC):
             top_k=self.top_k,
         )
 
-        # Build context
+        # --- Print retrieved chunks before generating an answer ---
+        print(f"\n[RETRIEVAL LOG] Collection: {self.collection_name}")
+        print(f"[RETRIEVAL LOG] {len(results.chunks)} chunk(s) retrieved for query: \"{question}\"")
+
+        for i, chunk in enumerate(results.chunks, start=1):
+            preview = chunk.text.strip().replace("\n", " ")
+            if len(preview) > 200:
+                preview = preview[:200] + "..."
+            print(f"  [{i}] source={chunk.source} | id={chunk.id}")
+            print(f"      text: {preview}")
+
+        print("[RETRIEVAL LOG] --- end of retrieved chunks ---\n")
+        # -------------------------------------------------------------
+
         # Build context
         context = "\n\n".join(
             f"Reference {i + 1}:\n{chunk.text}"
             for i, chunk in enumerate(results.chunks)
         )
-        
-        
 
         # Read system prompt
         with open(
