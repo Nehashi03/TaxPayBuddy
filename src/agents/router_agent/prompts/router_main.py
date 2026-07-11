@@ -33,14 +33,14 @@ class RouterAgent:
         self.llm_client = llm
         self.vector_store = vector_store
 
-        
+        # Dependency Injection: every specialist agent shares
+        # the same llm client and vector store instances.
         self.agent1 = TINRegistrationAgent(llm=self.llm_client, vector_store=self.vector_store)
         self.agent2 = IndividualIncomeTaxAgent(llm=self.llm_client, vector_store=self.vector_store)
         self.agent3 = CorporateIncomeTaxAgent(llm=self.llm_client, vector_store=self.vector_store)
         self.agent4 = WithholdingTaxAgent(llm=self.llm_client, vector_store=self.vector_store)
         self.fallback_agent = FallbackAgent()
 
-        
         self._agent_registry: dict[str, IAgent] = {
             "agent1_tin_registration": self.agent1,
             "agent2_individual_income_tax": self.agent2,
@@ -52,13 +52,33 @@ class RouterAgent:
     def _fast_keyword_route(self, query_clean: str):
         """
         Cheap keyword pre-check so obvious queries skip the LLM call.
-        Returns a label, or None if nothing matched confidently.
+
+        Scores every rule by how many of its keywords appear in the query
+        and returns the label with the HIGHEST score, instead of the
+        first rule that happens to match. This stops a generic word that
+        overlaps between two agents from hijacking a query just because
+        its rule was checked first.
+
+        Returns a label, or None if nothing matched confidently (no
+        keywords found, or a tie between two agents) -- in which case
+        route_and_execute() falls back to the LLM router.
         """
 
-        return next(
-            (rule.label for rule in KEYWORD_RULES if rule.matches(query_clean)),
-            None,
-        )
+        scores = [
+            (rule.match_count(query_clean), rule.label)
+            for rule in KEYWORD_RULES
+        ]
+
+        best_score, best_label = max(scores, key=lambda item: item[0])
+
+        if best_score == 0:
+            return None
+
+        top_labels = {label for score, label in scores if score == best_score}
+        if len(top_labels) > 1:
+            return None
+
+        return best_label
 
     def _llm_route(self, user_query: str) -> str:
         """
@@ -97,7 +117,6 @@ class RouterAgent:
 
         print(f"[ROUTER AGENT LOG] Routing query to: --> {selected_label}")
 
-        
         selected_agent = self._agent_registry.get(selected_label, self.fallback_agent)
 
         return selected_agent.process_query(user_query)
