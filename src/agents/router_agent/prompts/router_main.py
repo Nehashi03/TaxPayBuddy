@@ -32,14 +32,17 @@ class RouterAgent:
 
         self.llm_client = llm
         self.vector_store = vector_store
+        self.last_routed_label = None
 
-        # Dependency Injection: every specialist agent shares
-        # the same llm client and vector store instances.
+      
         self.agent1 = TINRegistrationAgent(llm=self.llm_client, vector_store=self.vector_store)
         self.agent2 = IndividualIncomeTaxAgent(llm=self.llm_client, vector_store=self.vector_store)
         self.agent3 = CorporateIncomeTaxAgent(llm=self.llm_client, vector_store=self.vector_store)
         self.agent4 = WithholdingTaxAgent(llm=self.llm_client, vector_store=self.vector_store)
         self.fallback_agent = FallbackAgent()
+
+        
+        self.last_routed_label: str | None = None
 
         self._agent_registry: dict[str, IAgent] = {
             "agent1_tin_registration": self.agent1,
@@ -76,6 +79,7 @@ class RouterAgent:
 
         top_labels = {label for score, label in scores if score == best_score}
         if len(top_labels) > 1:
+            # Tie between two agents -- not confident enough, let the LLM decide.
             return None
 
         return best_label
@@ -115,6 +119,8 @@ class RouterAgent:
 
         selected_label = self._fast_keyword_route(query_clean) or self._llm_route(user_query)
 
+        self.last_routed_label = selected_label
+        
         print(f"[ROUTER AGENT LOG] Routing query to: --> {selected_label}")
 
         selected_agent = self._agent_registry.get(selected_label, self.fallback_agent)
