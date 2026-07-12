@@ -7,10 +7,10 @@ from .config import (
 )
 
 
-class Agent3_cooperate_income_tax(BaseAgent):
+class CorporateIncomeTaxAgent(BaseAgent):
     """
     Agent responsible for answering
-    cooperate_income_tax  questions.
+    Corporate Income Tax questions.
     """
 
     def __init__(self, llm, vector_store):
