@@ -95,8 +95,9 @@ def test_fallback_agent_returns_fixed_refusal():
     assert response.retrieved_chunks == []
 
 
-
+# ---------------------------------------------------------------------------
 # RouterAgent
+# ---------------------------------------------------------------------------
 
 @pytest.fixture
 def router(mock_llm, populated_vector_store):

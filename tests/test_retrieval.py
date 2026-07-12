@@ -18,7 +18,6 @@ from src.framework.core.data_models import DocumentChunk, SearchResult
 from conftest import MockVectorStore, make_chunk
 
 
-
 # Retriever
 
 def test_retriever_delegates_to_vector_store_search(mock_vector_store):
@@ -58,7 +57,6 @@ def test_retriever_respects_top_k(mock_vector_store):
     result = retriever.retrieve(query="q", collection_name="agent1_tin_registration", top_k=2)
 
     assert len(result.chunks) == 2
-
 
 
 class _FakeCollection:
