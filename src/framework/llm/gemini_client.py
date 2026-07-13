@@ -23,12 +23,7 @@ class GeminiClient(ILLMClient):
             raise ValueError("Gemini API key not found.")
 
         self.client = genai.Client(api_key=api_key)
-        # gemini-2.5-flash was sunset by Google (returns 404 "no longer
-        # available") ahead of its announced Oct 16 2026 shutdown date.
-        # gemini-flash-latest is Google's auto-updating alias for the
-        # current GA flash model (gemini-3.5-flash as of July 2026), so
-        # this doesn't need to be hand-updated again next time Google
-        # rotates models.
+        
         self.model_name = "gemini-flash-latest"
 
     def generate(self, prompt: str, system_instruction: str = "") -> str:
