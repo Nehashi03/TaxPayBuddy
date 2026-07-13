@@ -1,0 +1,296 @@
+[
+  {
+    "id": "GT001",
+    "question": "What is a Taxpayer Identification Number (TIN)?",
+    "expected_agent": "agent1_tin_registration",
+    "keywords": ["TIN", "Taxpayer Identification Number", "IRD"],
+    "reference_answer": "A Taxpayer Identification Number (TIN) is a unique identification number issued by the Inland Revenue Department (IRD) to identify taxpayers for tax administration purposes. It is used for tax registration, e-Services, filing tax returns, tax payments, refunds, and updating taxpayer information."
+  },
+  {
+    "id": "GT002",
+    "question": "Does obtaining a TIN mean I have to pay income tax?",
+    "expected_agent": "agent1_tin_registration",
+    "keywords": ["TIN", "income tax", "liability"],
+    "reference_answer": "No. Obtaining a TIN does not automatically create an income tax liability. Income tax depends on taxable income and the applicable provisions of the Inland Revenue Act."
+  },
+  {
+    "id": "GT003",
+    "question": "Who must register for a TIN?",
+    "expected_agent": "agent1_tin_registration",
+    "keywords": ["18 years", "mandatory", "TIN"],
+    "reference_answer": "Individuals aged 18 years and above are generally required to register for a TIN. Registration requirements also apply to companies, partnerships, trusts, sole proprietors, and other eligible entities."
+  },
+  {
+    "id": "GT004",
+    "question": "What documents are required for an individual TIN registration?",
+    "expected_agent": "agent1_tin_registration",
+    "keywords": ["NIC", "passport", "proof of address"],
+    "reference_answer": "An individual generally requires a completed application form, a valid National Identity Card (or passport for foreign nationals), and proof of address where applicable."
+  },
+  {
+    "id": "GT005",
+    "question": "What methods are available to register for a TIN?",
+    "expected_agent": "agent1_tin_registration",
+    "keywords": ["online", "in-person", "post"],
+    "reference_answer": "The IRD provides three registration methods: online through the IRD e-Services Portal, in person at an IRD office or TPSU, and by post."
+  },
+  {
+    "id": "GT006",
+    "question": "What is the annual personal income tax relief for the Year of Assessment 2025/2026?",
+    "expected_agent": "agent2_individual_income_tax",
+    "keywords": ["personal relief", "1.8 million"],
+    "reference_answer": "The annual personal income tax relief is LKR 1,800,000, equivalent to LKR 150,000 per month."
+  },
+  {
+    "id": "GT007",
+    "question": "What is APIT?",
+    "expected_agent": "agent2_individual_income_tax",
+    "keywords": ["APIT", "Advance Personal Income Tax"],
+    "reference_answer": "Advance Personal Income Tax (APIT) is the mandatory monthly tax withholding system applied to employment income. Employers deduct APIT from salaries and remit it to the IRD."
+  },
+  {
+    "id": "GT008",
+    "question": "When is a resident individual exempt from filing an annual income tax return?",
+    "expected_agent": "agent2_individual_income_tax",
+    "keywords": ["return", "APIT", "interest"],
+    "reference_answer": "A resident individual is exempt if the income consists only of employment income subject to APIT and annual interest income does not exceed LKR 5,000."
+  },
+  {
+    "id": "GT009",
+    "question": "What is the standard corporate income tax rate in Sri Lanka?",
+    "expected_agent": "agent3_corporate_income_tax",
+    "keywords": ["corporate tax", "30%"],
+    "reference_answer": "The standard corporate income tax rate is 30%, subject to any concessionary rates or exemptions applicable under the Inland Revenue Act."
+  },
+  {
+    "id": "GT010",
+    "question": "What is the withholding tax rate on payments to independent service providers?",
+    "expected_agent": "agent4_withholding_tax",
+    "keywords": ["WHT", "5%", "service provider"],
+    "reference_answer": "A 5% withholding tax applies where aggregate monthly payments to a resident independent service provider exceed LKR 100,000."
+  },
+  {
+    "id": "GT011",
+    "question": "What is the Advance Income Tax (AIT) rate on bank deposit interest?",
+    "expected_agent": "agent4_withholding_tax",
+    "keywords": ["AIT", "interest", "10%"],
+    "reference_answer": "The Advance Income Tax (AIT) rate on interest and deposit discounts is 10%."
+  },
+  {
+    "id": "GT012",
+    "question": "Where can taxpayers obtain assistance for TIN registration or tax-related services?",
+    "expected_agent": "agent1_tin_registration",
+    "keywords": ["TPSU", "IRD", "support"],
+    "reference_answer": "Taxpayers can obtain assistance through the Taxpayer Services Unit (TPSU), the IRD Call Centre, the IRD e-Services Portal, or by visiting an Inland Revenue office."
+  },
+  {
+    "id": "GT013",
+    "question": "Can students above 18 years obtain a TIN?",
+    "expected_agent": "agent1_tin_registration",
+    "keywords": ["students", "18 years", "TIN"],
+    "reference_answer": "Yes. Students aged 18 years or above are generally required to register for a TIN even if they have no taxable income."
+  },
+  {
+    "id": "GT014",
+    "question": "Can unemployed individuals obtain a TIN?",
+    "expected_agent": "agent1_tin_registration",
+    "keywords": ["unemployed", "TIN"],
+    "reference_answer": "Yes. Unemployed individuals may still be required to obtain a TIN for administrative and legal purposes."
+  },
+  {
+    "id": "GT015",
+    "question": "Can foreign nationals apply for a TIN?",
+    "expected_agent": "agent1_tin_registration",
+    "keywords": ["foreign nationals", "passport"],
+    "reference_answer": "Yes. Foreign nationals conducting business or earning taxable income in Sri Lanka may apply using a valid passport and supporting documents."
+  },
+  {
+    "id": "GT016",
+    "question": "Is proof of address required for TIN registration?",
+    "expected_agent": "agent1_tin_registration",
+    "keywords": ["proof of address"],
+    "reference_answer": "Proof of address is required if the applicant's address differs from the NIC or official records."
+  },
+  {
+    "id": "GT017",
+    "question": "Can a company register for a TIN?",
+    "expected_agent": "agent1_tin_registration",
+    "keywords": ["company", "certificate of incorporation"],
+    "reference_answer": "Yes. Companies must provide incorporation documents, directors' details, and other required supporting documents."
+  },
+  {
+    "id": "GT018",
+    "question": "What should applicants do after submitting an online TIN application?",
+    "expected_agent": "agent1_tin_registration",
+    "keywords": ["acknowledgement"],
+    "reference_answer": "Applicants should keep the acknowledgement number and wait for the IRD to verify and issue the TIN."
+  },
+  {
+    "id": "GT019",
+    "question": "What are common reasons for delays in TIN registration?",
+    "expected_agent": "agent1_tin_registration",
+    "keywords": ["delay", "missing documents"],
+    "reference_answer": "Missing documents, incomplete forms, unclear uploaded files, invalid identification, and failure to complete the declaration may delay processing."
+  },
+  {
+    "id": "GT020",
+    "question": "Can an authorized representative submit a TIN application?",
+    "expected_agent": "agent1_tin_registration",
+    "keywords": ["authorized representative"],
+    "reference_answer": "Yes. An authorized representative may submit the application with a valid Letter of Authority."
+  },
+  {
+    "id": "GT021",
+    "question": "What is the first income tax rate after the annual relief?",
+    "expected_agent": "agent2_individual_income_tax",
+    "keywords": ["6%"],
+    "reference_answer": "The first LKR 1,000,000 of taxable income above the LKR 1,800,000 annual relief is taxed at 6%."
+  },
+  {
+    "id": "GT022",
+    "question": "What is the highest personal income tax rate?",
+    "expected_agent": "agent2_individual_income_tax",
+    "keywords": ["36%"],
+    "reference_answer": "The highest marginal personal income tax rate is 36%."
+  },
+  {
+    "id": "GT023",
+    "question": "When must employers remit APIT to the IRD?",
+    "expected_agent": "agent2_individual_income_tax",
+    "keywords": ["15th day"],
+    "reference_answer": "Employers must remit APIT by the 15th day of the following month."
+  },
+  {
+    "id": "GT024",
+    "question": "What is the employee EPF contribution rate?",
+    "expected_agent": "agent2_individual_income_tax",
+    "keywords": ["EPF", "8%"],
+    "reference_answer": "Employees contribute 8% of their gross monthly earnings to EPF."
+  },
+  {
+    "id": "GT025",
+    "question": "What is the employer EPF contribution rate?",
+    "expected_agent": "agent2_individual_income_tax",
+    "keywords": ["12%"],
+    "reference_answer": "Employers contribute 12% of the employee's gross earnings to EPF."
+  },
+  {
+    "id": "GT026",
+    "question": "What is the employer ETF contribution rate?",
+    "expected_agent": "agent2_individual_income_tax",
+    "keywords": ["ETF", "3%"],
+    "reference_answer": "Employers contribute 3% of the employee's gross monthly earnings to the ETF."
+  },
+  {
+    "id": "GT027",
+    "question": "Can foreign service income qualify for a concessionary tax rate?",
+    "expected_agent": "agent2_individual_income_tax",
+    "keywords": ["foreign income", "15%"],
+    "reference_answer": "Yes. Foreign service income remitted through a licensed bank may qualify for a concessionary maximum tax rate of 15%."
+  },
+  {
+    "id": "GT028",
+    "question": "What happens if foreign income is not remitted through a licensed bank?",
+    "expected_agent": "agent2_individual_income_tax",
+    "keywords": ["36%"],
+    "reference_answer": "It becomes subject to the normal progressive tax rates instead of the concessionary rate."
+  },
+  {
+    "id": "GT029",
+    "question": "What is the standard corporate income tax rate?",
+    "expected_agent": "agent3_corporate_income_tax",
+    "keywords": ["30%"],
+    "reference_answer": "The standard corporate income tax rate is 30%."
+  },
+  {
+    "id": "GT030",
+    "question": "Can companies obtain concessionary tax rates?",
+    "expected_agent": "agent3_corporate_income_tax",
+    "keywords": ["concessionary"],
+    "reference_answer": "Yes. Certain companies qualify for concessionary tax rates under the Inland Revenue Act depending on their activities."
+  },
+  {
+    "id": "GT031",
+    "question": "What is the withholding tax rate on dividends?",
+    "expected_agent": "agent4_withholding_tax",
+    "keywords": ["15%", "dividends"],
+    "reference_answer": "Dividend distributions are subject to a 15% withholding tax."
+  },
+  {
+    "id": "GT032",
+    "question": "What is the withholding tax rate on royalties?",
+    "expected_agent": "agent4_withholding_tax",
+    "keywords": ["14%", "royalties"],
+    "reference_answer": "Royalty payments are generally subject to a 14% withholding tax."
+  },
+  {
+    "id": "GT033",
+    "question": "At what monthly amount does withholding tax apply to resident rental income?",
+    "expected_agent": "agent4_withholding_tax",
+    "keywords": ["100000"],
+    "reference_answer": "Withholding tax applies when aggregate monthly rent exceeds LKR 100,000."
+  },
+  {
+    "id": "GT034",
+    "question": "What withholding tax rate applies to resident rental income?",
+    "expected_agent": "agent4_withholding_tax",
+    "keywords": ["10%"],
+    "reference_answer": "Resident rental income is subject to a 10% withholding tax where applicable."
+  },
+  {
+    "id": "GT035",
+    "question": "Is withholding tax on dividends final?",
+    "expected_agent": "agent4_withholding_tax",
+    "keywords": ["final withholding"],
+    "reference_answer": "Yes. Dividend withholding tax is treated as a final withholding tax."
+  },
+  {
+    "id": "GT036",
+    "question": "When must withholding agents remit WHT?",
+    "expected_agent": "agent4_withholding_tax",
+    "keywords": ["15 days"],
+    "reference_answer": "Within 15 days after the end of each calendar month."
+  },
+  {
+    "id": "GT037",
+    "question": "Where can taxpayers request a PIN?",
+    "expected_agent": "agent1_tin_registration",
+    "keywords": ["PIN"],
+    "reference_answer": "A PIN can be requested through the IRD e-Services Portal or by visiting an IRD office."
+  },
+  {
+    "id": "GT038",
+    "question": "What services are provided by the Taxpayer Services Unit (TPSU)?",
+    "expected_agent": "agent1_tin_registration",
+    "keywords": ["TPSU"],
+    "reference_answer": "TPSU assists with TIN registration, PIN requests, taxpayer profile updates, tax registration, tax clearance certificates, and general taxpayer guidance."
+  },
+  {
+    "id": "GT039",
+    "question": "What are the IRD Call Centre operating hours?",
+    "expected_agent": "agent1_tin_registration",
+    "keywords": ["call centre", "hours"],
+    "reference_answer": "Monday to Friday: 9.00 a.m. to 7.00 p.m.; Saturday: 9.00 a.m. to 1.00 p.m."
+  },
+  {
+    "id": "GT040",
+    "question": "What information should taxpayers prepare before contacting the IRD?",
+    "expected_agent": "agent1_tin_registration",
+    "keywords": ["TIN", "NIC"],
+    "reference_answer": "Taxpayers should have their TIN, NIC or passport, acknowledgement number, supporting documents, and details of the issue."
+  },
+  {
+    "id": "GT041",
+    "question": "Can TPSU assist unregistered taxpayers?",
+    "expected_agent": "agent1_tin_registration",
+    "keywords": ["unregistered"],
+    "reference_answer": "Yes. TPSU provides guidance on TIN registration, registration procedures, and required supporting documents."
+  },
+  {
+    "id": "GT042",
+    "question": "Can taxpayers obtain a Tax Clearance Certificate through TPSU?",
+    "expected_agent": "agent1_tin_registration",
+    "keywords": ["Tax Clearance Certificate"],
+    "reference_answer": "Yes. The Taxpayer Services Unit provides assistance with issuing Tax Clearance Certificates."
+  }
+]
