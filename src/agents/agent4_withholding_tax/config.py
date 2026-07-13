@@ -1,6 +1,6 @@
 from pathlib import Path
 
-COLLECTION_NAME = "agent1_tin_registration"
+COLLECTION_NAME = "agent4_withholding_tax"
 
 TOP_K = 6
 
