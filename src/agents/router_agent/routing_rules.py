@@ -85,6 +85,13 @@ class KeywordRoutingRule:
         return sum(1 for keyword in self.keywords if keyword in query_clean)
 
 
+# Data-driven keyword rules.
+# NOTE: keep each list to terms that are reasonably exclusive to that
+# domain. Generic words that show up across multiple tax types (e.g.
+# "income", "tax return", "deduction") were removed from here on purpose
+# -- they caused queries to be misrouted no matter what order the rules
+# were checked in. Genuinely ambiguous queries fall through to the LLM
+# router (_llm_route), which can actually reason about the question.
 KEYWORD_RULES = (
     KeywordRoutingRule(("tin","tin registration","register","registration","new tin","create tin","apply tin","get tin","obtain tin","tax identification number","tax id","tin number","register tin","open tin","activate tin"), "agent1_tin_registration"),
     KeywordRoutingRule(("individual","personal","person","employee","salary","employment income","paye","apit","monthly tax","resident individual","non-resident individual","relief"), "agent2_individual_income_tax"),

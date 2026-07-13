@@ -34,16 +34,20 @@ class RouterAgent:
         self.vector_store = vector_store
         self.last_routed_label = None
 
-      
+        # Dependency Injection: every specialist agent shares
+        # the same llm client and vector store instances.
         self.agent1 = TINRegistrationAgent(llm=self.llm_client, vector_store=self.vector_store)
         self.agent2 = IndividualIncomeTaxAgent(llm=self.llm_client, vector_store=self.vector_store)
         self.agent3 = CorporateIncomeTaxAgent(llm=self.llm_client, vector_store=self.vector_store)
         self.agent4 = WithholdingTaxAgent(llm=self.llm_client, vector_store=self.vector_store)
         self.fallback_agent = FallbackAgent()
 
-        
+        # Set by route_and_execute() each time it runs -- see there.
         self.last_routed_label: str | None = None
 
+        # The dispatch table: label -> IAgent instance.
+        # Every value here is polymorphic (implements process_query), so
+        # execution is a single dict lookup, never an if/elif chain.
         self._agent_registry: dict[str, IAgent] = {
             "agent1_tin_registration": self.agent1,
             "agent2_individual_income_tax": self.agent2,
@@ -119,10 +123,16 @@ class RouterAgent:
 
         selected_label = self._fast_keyword_route(query_clean) or self._llm_route(user_query)
 
+        # Exposed so callers (e.g. evaluation/run_evaluation.py) can read
+        # which label was picked without re-running the routing logic
+        # themselves, which would cost an extra, redundant Gemini call.
         self.last_routed_label = selected_label
         
         print(f"[ROUTER AGENT LOG] Routing query to: --> {selected_label}")
 
+        # Single dispatch-table lookup replaces the old if/elif ladder.
+        # Unknown/invalid labels fall back to the FallbackAgent (Null Object),
+        # so this line can never raise a KeyError.
         selected_agent = self._agent_registry.get(selected_label, self.fallback_agent)
 
         return selected_agent.process_query(user_query)
@@ -130,6 +140,7 @@ class RouterAgent:
 
 def main():
 
+    # Create shared services (same pattern as each agent's own main.py)
     llm = GeminiClient()
 
     vector_store = ChromaStore()
