@@ -1,4 +1,4 @@
-# TaxPayBuddy 🇱🇰
+# TaxPayBuddy
 
 **A multi-agent Retrieval-Augmented Generation (RAG) chatbot for Sri Lankan tax law.**
 
@@ -56,29 +56,29 @@ User Query
 TaxPayBuddy/
 ├── src/
 │   ├── agents/
-│   │   ├── router_agent/          # RouterAgent, routing rules, FallbackAgent
+│   │   ├── router_agent/          
 │   │   ├── agent1_tin_registration/
 │   │   ├── agent2_individual_income_tax/
 │   │   ├── agent3_corporate_income_tax/
 │   │   └── agent4_withholding_tax/
 │   └── framework/
-│       ├── core/                  # shared data models (RAGResponse, DocumentChunk, ...)
-│       ├── database/              # ChromaStore wrapper
-│       ├── interfaces/            # IAgent abstract interface
-│       ├── llm/                   # GeminiClient wrapper
-│       ├── loaders/                # PDF loading
-│       └── rag/                   # chunker, ingestion, retriever
+│       ├── core/                  
+│       ├── database/              
+│       ├── interfaces/            
+│       ├── llm/                   
+│       ├── loaders/                
+│       └── rag/                   
 ├── evaluation/
-│   ├── ground_truth.json          # annotated Q&A pairs, incl. out-of-domain cases
-│   ├── run_evaluation.py          # evaluation harness (routing, retrieval, faithfulness)
-│   ├── metrics.py                 # Precision/Recall/F1, cosine similarity, confusion matrix
-│   ├── llm_judge.py                # Gemini-as-judge faithfulness scoring
-│   └── results.csv                # latest evaluation run output
-├── tests/                          # pytest suite (mocked LLM + vector store, no API calls)
+│   ├── ground_truth.json          
+│   ├── run_evaluation.py          
+│   ├── metrics.py                 
+│   ├── llm_judge.py                
+│   └── results.csv                
+├── tests/                          
 ├── data/
-│   └── raw_pdfs/                  # official IRD guides, one folder per tax domain
+│   └── raw_pdfs/                  
 ├── requirements.txt
-└── .env                            # GEMINI_API_KEY=...
+└── .env                            
 ```
 
 ---
